@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<persistence xmlns="https://jakarta.ee/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_2.xsd"
+             version="3.0">
+    <persistence-unit name="miUnidadDePersistencia" transaction-type="RESOURCE_LOCAL">
+
+        <!-- Clases de entidad -->
+        <class>logica.Receta</class>
+        <class>logica.Ingrediente</class>
+        <class>logica.DetalleReceta</class>
+
+        <properties>
+            <!-- Configuración para actualizar el esquema automáticamente -->
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
+
+            <!-- Dialecto de Hibernate para MariaDB -->
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MariaDBDialect"/>
+
+            <!-- Mostrar las sentencias SQL en la consola -->
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+            <property name="hibernate.use_sql_comments" value="true"/>
+
+            <!-- Detalles de conexión a la base de datos -->
+            <property name="jakarta.persistence.jdbc.url"
+                      value="jdbc:mariadb://iasanz.synology.me:3306/lauramartinezs98_recetas_cocina?useUnicode=true&amp;characterEncoding=utf8mb4"/>
+            <property name="jakarta.persistence.jdbc.user" value="alumno"/>
+            <property name="jakarta.persistence.jdbc.password" value="AlumnoSanz$1"/>
+            <property name="jakarta.persistence.jdbc.driver" value="org.mariadb.jdbc.Driver"/>
+        </properties>
+    </persistence-unit>
+</persistence>

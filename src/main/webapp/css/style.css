@@ -1,0 +1,195 @@
+/* ======================================================================
+   0. VARIABLES GLOBALES Y CONFIGURACIÓN BASE (TEMA MODERNO/NAVY)
+   ====================================================================== */
+:root {
+    /* Paleta de Colores Primarios */
+    --color-primary: #1e3a5f; /* Azul Oscuro (Navy) - Header/Botones */
+    --color-secondary: #008080; /* Verde Azulado (Teal) - Acentos/Enlaces */
+    --color-accent-bg: #f0f4f7; /* Gris Muy Claro (Fondo de Componentes) */
+    --color-background-soft: #f9f9f9; /* Fondo de la Página */
+
+    /* Colores Neutros y de Texto */
+    --color-text-dark: #2c3e50; /* Texto principal (Azul Pizarra) */
+    --color-text-medium: #555555;
+    --color-text-light: #95a5a6;
+    --color-border: #cccccc; /* Borde visible */
+    --color-white: #ffffff;
+
+    /* Colores de Estado (Alto Contraste) */
+    --color-success-bg: #e6f7e6;
+    --color-success-text: #27ae60;
+    --color-error-bg: #fff0f0;
+    --color-error-text: #c0392b;
+
+    /* Tipografía y Espaciado */
+    --font-family-base: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --spacing-sm: 10px;
+    --spacing-md: 20px;
+    --radius-md: 8px;
+}
+
+/* ======================================================================
+   1. ESTRUCTURA GENERAL Y LAYOUT
+   ====================================================================== */
+body {
+    font-family: var(--font-family-base);
+    margin: 0;
+    padding: 0;
+    background-color: var(--color-background-soft);
+    color: var(--color-text-dark);
+    line-height: 1.6;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: var(--color-primary);
+    color: var(--color-white); /* Texto del header en blanco */
+    padding: 15px 30px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.8em;
+}
+
+main {
+    padding: var(--spacing-md) 30px;
+    max-width: 1200px;
+    margin: var(--spacing-md) auto;
+    background-color: var(--color-white);
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* ======================================================================
+   2. NAVEGACIÓN Y ENLACES
+   ====================================================================== */
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin-top: var(--spacing-sm);
+    display: flex;
+    gap: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--color-white); /* Enlaces del header en blanco */
+    font-weight: 600;
+    padding: 5px 0;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: var(--color-secondary); /* Hover en verde azulado */
+}
+
+a {
+    color: var(--color-secondary); /* Enlaces del cuerpo en verde azulado */
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+/* ======================================================================
+   3. FORMULARIOS Y BOTONES
+   ====================================================================== */
+input[type="text"], input[type="number"], textarea, select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0px;
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    box-sizing: border-box;
+    background-color: var(--color-accent-bg);
+    color: var(--color-text-dark);
+}
+
+/* Botón principal (Guardar, Añadir) */
+button[type="submit"], button[type="button"] {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    padding: 10px 15px;
+    margin-bottom: 5px;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover, button[type="button"]:hover {
+    background-color: var(--color-secondary);
+}
+
+/* Botón de Quitar Ingrediente */
+.ingrediente-item button {
+    background-color: var(--color-text-light); /* Gris suave */
+    color: var(--color-text-dark);
+}
+
+.ingrediente-item button:hover {
+    background-color: #c0392b; /* Rojo para un mejor feedback de eliminación */
+    color: var(--color-white);
+}
+
+/* ======================================================================
+   4. TABLAS
+   ====================================================================== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+th, td {
+    border: 1px solid var(--color-border);
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background-color: var(--color-accent-bg); /* Fondo gris suave */
+    color: var(--color-text-dark);
+    font-weight: 700;
+}
+
+/* ======================================================================
+   5. MENSAJES DE ESTADO (Alerts)
+   ====================================================================== */
+.success {
+    background-color: var(--color-success-bg);
+    color: var(--color-success-text);
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid var(--color-success-text);
+}
+
+.error {
+    background-color: var(--color-error-bg);
+    color: var(--color-error-text);
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid var(--color-error-text);
+}
+
+/* ======================================================================
+   6. ESTILOS ESPECÍFICOS DE INGREDIENTES
+   ====================================================================== */
+.ingrediente-item {
+    display: flex;
+    gap: var(--spacing-sm);
+    align-items: center;
+    margin-bottom: 10px;
+    border: 1px dashed var(--color-border);
+    padding: 10px;
+    border-radius: 6px;
+    background-color: var(--color-accent-bg); /* Fondo gris claro */
+}
+
+footer p {
+    color: var(--color-text-light);
+}
