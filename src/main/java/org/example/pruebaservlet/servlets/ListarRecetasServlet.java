@@ -23,7 +23,7 @@ public class ListarRecetasServlet extends HttpServlet {
 
         request.setCharacterEncoding("UTF-8");
         String accion = request.getParameter("accion");
-        String vista = "/vistas/recetas/listarRecetas.jsp";
+        String vista = "vistas/recetas/listarRecetas.jsp";
 
         try {
             if ("ver".equals(accion)) {

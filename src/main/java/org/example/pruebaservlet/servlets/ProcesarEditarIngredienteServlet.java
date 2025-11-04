@@ -10,7 +10,7 @@ import logica.Ingrediente;
 import logica.Unidad;
 import java.io.IOException;
 
-@WebServlet("/ProcesarEditarIngrediente")
+@WebServlet("/editarIngredientes")
 public class ProcesarEditarIngredienteServlet extends HttpServlet {
 
     private final IngredienteDAO ingredienteDAO = new IngredienteDAO();
@@ -20,7 +20,7 @@ public class ProcesarEditarIngredienteServlet extends HttpServlet {
             throws ServletException, IOException {
 
         request.setCharacterEncoding("UTF-8");
-        String vistaRedireccion = "/ListarIngredientes";
+        String vistaRedireccion = "/Ingredientes";
         Integer id = null;
 
         try {
@@ -31,7 +31,7 @@ public class ProcesarEditarIngredienteServlet extends HttpServlet {
             // Validación de Nulidad y Vacío
             if (nuevoNombre == null || nuevoNombre.trim().isEmpty()) {
                 request.getSession().setAttribute("error", "El nombre no puede estar vacío.");
-                response.sendRedirect("/MostrarEditarIngrediente?id=" + id);
+                response.sendRedirect(request.getContextPath() + "/MostrarEditarIngrediente?id=" + id);
                 return;
             }
 
@@ -50,9 +50,9 @@ public class ProcesarEditarIngredienteServlet extends HttpServlet {
         } catch (Exception e) {
             request.getSession().setAttribute("error", "Error al actualizar: " + e.getMessage());
             // Si el error ocurrió después de obtener el ID, volvemos a la edición
-            if (id != null) vistaRedireccion = "MostrarEditarIngrediente?id=" + id;
+            if (id != null) vistaRedireccion = "/MostrarEditarIngrediente?id=" + id;
         }
 
-        response.sendRedirect(vistaRedireccion);
+        response.sendRedirect(request.getContextPath() + vistaRedireccion);
     }
 }

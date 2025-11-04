@@ -12,7 +12,7 @@ import logica.Dificultad;
 import logica.Modalidad;
 import java.io.IOException;
 
-@WebServlet("/ProcesarEditarReceta")
+@WebServlet("/editarRecetas")
 public class ProcesarEditarRecetaServlet extends HttpServlet {
 
     private final RecetaDAO recetaDAO = new RecetaDAO();
@@ -22,15 +22,14 @@ public class ProcesarEditarRecetaServlet extends HttpServlet {
             throws ServletException, IOException {
 
         request.setCharacterEncoding("UTF-8");
-        String vistaRedireccion = "/ListarRecetas";
-        // Declaramos el ID fuera del try para usarlo en la redirección de error
+        // 1. Inicializamos con el mapping de éxito (Listado), usando /
+        String vistaRedireccion = "/Recetas"; // ASUMIMOS que el listado está en /Recetas
         Integer idReceta = null;
 
         try {
             // 1. Obtención y Sanitización de datos
             idReceta = Integer.parseInt(request.getParameter("id"));
 
-            // Los valores se recuperan y se limpian directamente.
             String nombreLimpio = getParameterValue(request, "nombre");
             String instruccionesLimpias = getParameterValue(request, "instrucciones");
 
@@ -40,8 +39,8 @@ public class ProcesarEditarRecetaServlet extends HttpServlet {
             // 2. VALIDACIÓN
             if (nombreLimpio.isEmpty() || instruccionesLimpias.isEmpty()) {
                 request.getSession().setAttribute("error", "Error: El nombre y las instrucciones no pueden estar vacíos.");
-                // Redirige de vuelta al formulario de edición
-                response.sendRedirect("MostrarEditarReceta?id=" + idReceta);
+                // Redirige de vuelta al formulario de edición (USANDO /)
+                response.sendRedirect(request.getContextPath() + "/MostrarEditarReceta?id=" + idReceta);
                 return;
             }
 
@@ -50,7 +49,7 @@ public class ProcesarEditarRecetaServlet extends HttpServlet {
 
             if (receta != null) {
                 receta.setNombre(nombreLimpio);
-                receta.setDescripcion(instruccionesLimpias); // setDescripcion
+                receta.setDescripcion(instruccionesLimpias);
                 receta.setDificultad(Dificultad.valueOf(dificultadString));
                 receta.setModalidad(Modalidad.valueOf(modalidadString));
 
@@ -63,16 +62,19 @@ public class ProcesarEditarRecetaServlet extends HttpServlet {
 
         } catch (NumberFormatException e) {
             request.getSession().setAttribute("error", "Error: ID o formato de datos inválido.");
-            vistaRedireccion = "ListarRecetas";
+            vistaRedireccion = "/Recetas"; // Si el ID falla, volvemos al listado
         } catch (IllegalArgumentException e) {
             request.getSession().setAttribute("error", "Error: Los valores de dificultad o modalidad no son válidos.");
-            vistaRedireccion = (idReceta != null) ? "MostrarEditarReceta?id=" + idReceta : "ListarRecetas";
+            // 2. Usamos rutas absolutas (con /) para el catch
+            vistaRedireccion = (idReceta != null) ? "/MostrarEditarReceta?id=" + idReceta : "/Recetas";
         } catch (Exception e) {
             request.getSession().setAttribute("error", "Error al actualizar la receta: " + e.getMessage());
-            vistaRedireccion = (idReceta != null) ? "MostrarEditarReceta?id=" + idReceta : "ListarRecetas";
+            // 3. Usamos rutas absolutas (con /) para el catch
+            vistaRedireccion = (idReceta != null) ? "/MostrarEditarReceta?id=" + idReceta : "/Recetas";
         }
 
-        response.sendRedirect(vistaRedireccion);
+        // 4. Redirección final segura usando getContextPath()
+        response.sendRedirect(request.getContextPath() + vistaRedireccion);
     }
 
     /**

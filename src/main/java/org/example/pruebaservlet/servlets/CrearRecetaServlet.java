@@ -65,7 +65,7 @@ public class CrearRecetaServlet extends HttpServlet {
         response.sendRedirect(vistaRedireccion);
     }
 
-    // --- MÉTODO DE LÓGICA DE NEGOCIO (Donde se ensambla la relación N:M) ---
+    // --- RELACIÓN N:M ---
     private void guardarReceta(HttpServletRequest request) {
 
         // 1. Obtener parámetros de campos de texto estándar
@@ -109,7 +109,7 @@ public class CrearRecetaServlet extends HttpServlet {
                             unidad
                     );
 
-                    // ENSAMBLA la relación N:M (LÍNEA CLAVE)
+                    // Relación N:M (LÍNEA CLAVE)
                     nuevaReceta.addDetalleReceta(detalle);
                 }
             }

@@ -16,7 +16,8 @@
     <% request.getSession().removeAttribute("error"); %>
     <% } %>
 
-    <form action="ProcesarEditarIngrediente" method="post">
+    <%-- Context Path para máxima robustez en la URL de acción --%>
+    <form action="<%= request.getContextPath() %>/editarIngredientes" method="post">
 
         <%-- Campo OCULTO: ID del ingrediente --%>
         <input type="hidden" name="id" value="<%= ingrediente.getId_ingrediente() %>">
@@ -45,7 +46,8 @@
         </div>
 
         <button type="submit">Guardar Cambios</button>
-        <a href="Ingredientes" style="margin-left: 15px;">Cancelar</a>
+        <%-- Usar Context Path y el mapping para Cancelar --%>
+        <a href="<%= request.getContextPath() %>/Ingredientes" style="margin-left: 15px;">Cancelar</a>
     </form>
 </main>
 
