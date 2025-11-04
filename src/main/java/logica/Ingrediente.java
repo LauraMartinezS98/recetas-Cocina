@@ -10,7 +10,7 @@ public class Ingrediente {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id_ingrediente;
 
-    @Column(name = "nombre", unique = true, nullable = false)
+    @Column(name = "nombre", nullable = false)
     private String nombre;
 
     @Enumerated(EnumType.STRING)

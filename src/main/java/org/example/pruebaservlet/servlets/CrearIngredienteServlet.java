@@ -34,7 +34,12 @@ public class CrearIngredienteServlet extends HttpServlet {
         try {
             String nombre = request.getParameter("nombre");
             String unidadString = request.getParameter("unidad"); //Obtiene la cadena del <select>
-
+            //
+            if (nombre == null || nombre.trim().isEmpty()) {
+                request.getSession().setAttribute("error", "Error: El nombre del ingrediente no puede estar vacío.");
+                response.sendRedirect(vistaRedireccion);
+                return; // Detiene la ejecución si el nombre está vacío
+            }
             //Transforma la cadena (ej: "GRAMO") a un objeto ENUM.
             Unidad unidadEnum = Unidad.valueOf(unidadString);
 

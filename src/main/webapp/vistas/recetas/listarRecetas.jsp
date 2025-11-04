@@ -59,7 +59,12 @@
         <td><%= receta.getModalidad().getDescripcion() %></td>
         <td><%= receta.getDificultad().toString() %></td>
         <td>
-            <a href="Recetas?accion=ver&id=<%= receta.getId_receta() %>">Ver Detalles</a>
+            <a href="Recetas?accion=ver&id=<%= receta.getId_receta() %>">Ver Detalles</a> |
+            <a href="MostrarEditarReceta?id=<%= receta.getId_receta() %>">Editar</a>  |
+            <a href="BorrarReceta?id=<%= receta.getId_receta() %>"
+               onclick="return confirm('¿Está seguro de que desea eliminar <%= receta.getNombre() %>?');">
+                Eliminar
+            </a>
         </td>
     </tr>
     <% } %>

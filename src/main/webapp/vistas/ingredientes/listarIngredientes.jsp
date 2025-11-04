@@ -25,7 +25,13 @@
         <td><%= ingrediente.getUnidad().toString() %></td>
 
         <td>
-            <a href="Ingredientes?accion=ver&id=<%= ingrediente.getId_ingrediente() %>">Ver Detalles</a>
+            <a href="Ingredientes?accion=ver&id=<%= ingrediente.getId_ingrediente() %>">Ver Detalles</a> |
+            <a href="MostrarEditarIngrediente?id=<%= ingrediente.getId_ingrediente() %>">Editar</a>
+            <%--No lo quiero usar--%>
+          <%--  <a href="BorrarIngrediente?id=<%= ingrediente.getId_ingrediente() %>"
+               onclick="return confirm('¿Está seguro de que desea eliminar <%= ingrediente.getNombre() %>?');">
+                Eliminar
+            </a>--%>
         </td>
     </tr>
     <% } %>

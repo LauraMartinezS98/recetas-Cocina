@@ -94,4 +94,48 @@ public class RecetaDAO {
             em.close();
         }
     }
+    /**
+     * Actualiza una receta existente en la base de datos.
+     */
+    public void actualizar(Receta receta) {
+        EntityManager em = JPAUtil.getEntityManager();
+        EntityTransaction tx = em.getTransaction();
+        try {
+            tx.begin();
+            // El método merge se encarga de tomar el objeto y actualizar su estado en la DB.
+            em.merge(receta);
+            tx.commit();
+        } catch (Exception e) {
+            if (tx.isActive()) {
+                tx.rollback();
+            }
+            throw new RuntimeException("Error al actualizar la receta: " + e.getMessage(), e);
+        } finally {
+            em.close();
+        }
+    }
+
+    /**
+     * Elimina una receta por su ID.
+     */
+    public void eliminar(Integer id) {
+        EntityManager em = JPAUtil.getEntityManager();
+        EntityTransaction tx = em.getTransaction();
+        try {
+            tx.begin();
+            Receta receta = em.find(Receta.class, id);
+
+            if (receta != null) {
+                em.remove(receta);
+            }
+            tx.commit();
+        } catch (Exception e) {
+            if (tx.isActive()) {
+                tx.rollback();
+            }
+            throw new RuntimeException("Error al eliminar la receta: " + e.getMessage(), e);
+        } finally {
+            em.close();
+        }
+    }
 }

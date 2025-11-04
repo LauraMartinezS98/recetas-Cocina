@@ -13,7 +13,7 @@
 
     <label for="unidadBase" class="form-label">Unidad de Medida Base:</label>
 
-    <select id="unidadBase" name="unidadBase" class="form-select" required>
+    <select id="unidadBase" name="unidad" class="form-select" required>
         <option value="">-- Selecciona Unidad --</option>
         <%
             // Itera sobre todos los valores del ENUM Unidad

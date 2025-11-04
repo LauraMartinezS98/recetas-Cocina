@@ -1,25 +1,25 @@
 /* ======================================================================
-   0. VARIABLES GLOBALES Y CONFIGURACIÓN BASE (TEMA MODERNO/NAVY)
+   0. VARIABLES GLOBALES Y CONFIGURACIÓN BASE (TEMA VERDE ELEGANTE/GOURMET)
    ====================================================================== */
 :root {
     /* Paleta de Colores Primarios */
-    --color-primary: #1e3a5f; /* Azul Oscuro (Navy) - Header/Botones */
-    --color-secondary: #008080; /* Verde Azulado (Teal) - Acentos/Enlaces */
-    --color-accent-bg: #f0f4f7; /* Gris Muy Claro (Fondo de Componentes) */
-    --color-background-soft: #f9f9f9; /* Fondo de la Página */
+    --color-primary: #3a5a40; /* Verde Oliva Oscuro - Header/Botones */
+    --color-secondary: #a3b18a; /* Verde Salvia - Acentos/Enlaces */
+    --color-accent-bg: #f3f2ec; /* Beige Suave - Fondo de Componentes */
+    --color-background-soft: #faf9f6; /* Fondo General */
 
     /* Colores Neutros y de Texto */
-    --color-text-dark: #2c3e50; /* Texto principal (Azul Pizarra) */
-    --color-text-medium: #555555;
-    --color-text-light: #95a5a6;
-    --color-border: #cccccc; /* Borde visible */
+    --color-text-dark: #2d3328; /* Verde Grisáceo Oscuro */
+    --color-text-medium: #4b4f3f;
+    --color-text-light: #9ca48a;
+    --color-border: #c9c5b9; /* Borde beige grisáceo */
     --color-white: #ffffff;
 
     /* Colores de Estado (Alto Contraste) */
-    --color-success-bg: #e6f7e6;
-    --color-success-text: #27ae60;
-    --color-error-bg: #fff0f0;
-    --color-error-text: #c0392b;
+    --color-success-bg: #e8f3e5;
+    --color-success-text: #3a5a40;
+    --color-error-bg: #fceeee;
+    --color-error-text: #b75b5b;
 
     /* Tipografía y Espaciado */
     --font-family-base: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -46,9 +46,9 @@ header {
     justify-content: center;
     flex-direction: column;
     background-color: var(--color-primary);
-    color: var(--color-white); /* Texto del header en blanco */
+    color: var(--color-white);
     padding: 15px 30px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
 header h1 {
@@ -62,7 +62,7 @@ main {
     margin: var(--spacing-md) auto;
     background-color: var(--color-white);
     border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 
 /* ======================================================================
@@ -78,18 +78,18 @@ nav ul {
 
 nav a {
     text-decoration: none;
-    color: var(--color-white); /* Enlaces del header en blanco */
+    color: var(--color-white);
     font-weight: 600;
     padding: 5px 0;
     transition: color 0.3s;
 }
 
 nav a:hover {
-    color: var(--color-secondary); /* Hover en verde azulado */
+    color: var(--color-secondary);
 }
 
 a {
-    color: var(--color-secondary); /* Enlaces del cuerpo en verde azulado */
+    color: var(--color-secondary);
     text-decoration: none;
 }
 a:hover {
@@ -108,32 +108,35 @@ input[type="text"], input[type="number"], textarea, select {
     box-sizing: border-box;
     background-color: var(--color-accent-bg);
     color: var(--color-text-dark);
+    cursor:pointer;
 }
 
-/* Botón principal (Guardar, Añadir) */
 button[type="submit"], button[type="button"] {
     background-color: var(--color-primary);
     color: var(--color-white);
     padding: 10px 15px;
-    margin-bottom: 5px;
+    margin:10px 0px;
     border-radius: 6px;
     font-weight: 600;
     transition: background-color 0.3s;
+    cursor:pointer;
 }
 
 button[type="submit"]:hover, button[type="button"]:hover {
     background-color: var(--color-secondary);
-}
-
-/* Botón de Quitar Ingrediente */
-.ingrediente-item button {
-    background-color: var(--color-text-light); /* Gris suave */
     color: var(--color-text-dark);
 }
 
+.ingrediente-item button {
+    background-color: var(--color-text-light);
+    color: var(--color-text-dark);
+    cursor:pointer;
+}
+
 .ingrediente-item button:hover {
-    background-color: #c0392b; /* Rojo para un mejor feedback de eliminación */
+    background-color: #b75b5b;
     color: var(--color-white);
+    cursor:pointer;
 }
 
 /* ======================================================================
@@ -152,7 +155,7 @@ th, td {
 }
 
 th {
-    background-color: var(--color-accent-bg); /* Fondo gris suave */
+    background-color: var(--color-accent-bg);
     color: var(--color-text-dark);
     font-weight: 700;
 }
@@ -187,7 +190,7 @@ th {
     border: 1px dashed var(--color-border);
     padding: 10px;
     border-radius: 6px;
-    background-color: var(--color-accent-bg); /* Fondo gris claro */
+    background-color: var(--color-accent-bg);
 }
 
 footer p {

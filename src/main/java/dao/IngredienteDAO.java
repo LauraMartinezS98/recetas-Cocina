@@ -57,4 +57,47 @@ public class IngredienteDAO {
             em.close();
         }
     }
+
+    public void actualizar(Ingrediente ingrediente) {
+        EntityManager em = JPAUtil.getEntityManager();
+        EntityTransaction tx = em.getTransaction();
+        try {
+            tx.begin();
+            // El método merge es clave para la funcionalidad de editar.
+            em.merge(ingrediente);
+            tx.commit();
+        } catch (Exception e) {
+            if (tx.isActive()) {
+                tx.rollback();
+            }
+            throw new RuntimeException("Error al actualizar el ingrediente: " + e.getMessage(), e);
+        } finally {
+            em.close();
+        }
+    }
+
+    /**
+     * Elimina un ingrediente por su ID.
+     */
+    public void eliminar(Integer id) {
+        EntityManager em = JPAUtil.getEntityManager();
+        EntityTransaction tx = em.getTransaction();
+        try {
+            tx.begin();
+            Ingrediente ingrediente = em.find(Ingrediente.class, id);
+
+            if (ingrediente != null) {
+                em.remove(ingrediente);
+            }
+            tx.commit();
+        } catch (Exception e) {
+            // Puede fallar si hay restricciones de clave foránea (el ingrediente se usa en una receta).
+            if (tx.isActive()) {
+                tx.rollback();
+            }
+            throw new RuntimeException("Error al eliminar el ingrediente. Posiblemente se está usando en una receta: " + e.getMessage(), e);
+        } finally {
+            em.close();
+        }
+    }
 }
