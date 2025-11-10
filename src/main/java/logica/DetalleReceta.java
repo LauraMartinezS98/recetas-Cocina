@@ -40,6 +40,11 @@ public class DetalleReceta {
         this.cantidad = cantidad;
         this.unidad = unidad;
     }
+    public DetalleReceta(Receta receta, Ingrediente ingrediente, BigDecimal cantidad) {
+        this.receta = receta;
+        this.ingrediente = ingrediente;
+        this.cantidad = cantidad;
+    }
 
     // --- Getters y Setters ---
 

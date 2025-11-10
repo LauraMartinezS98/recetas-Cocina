@@ -20,9 +20,6 @@ public class ListarIngredientesServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-/*        //Aseguramos la codificación UTF-8 para evitar problemas de tildes si se usa GET
-        request.setCharacterEncoding("UTF-8"); BORRAR!!!!!!!!!!*/
-
         String accion = request.getParameter("accion");
         String vista = "/vistas/ingredientes/listarIngredientes.jsp"; //Vista por defecto
 

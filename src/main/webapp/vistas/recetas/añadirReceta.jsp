@@ -55,6 +55,17 @@
             </select>
             <input type="number" name="cantidad" placeholder="Cantidad" min="0.1" step="any" class="form-input" required>
 
+            <select name="unidad" class="form-select" style="flex: 1;" required>
+                <option value="">-- Unidad --</option>
+                <%
+                    // Asumiendo que 'logica.Unidad' es un Enum con los valores de unidad
+                    for (Unidad unidad : Unidad.values()) {
+                %>
+                <option value="<%= unidad.name() %>"><%= unidad.toString() %></option>
+                <%
+                    }
+                %>
+            </select>
 
             <button type="button" onclick="eliminarIngrediente(this)" class="btn btn--delete">Quitar</button>
             <button type="button" onclick="añadirIngrediente()" class="btn btn--primary">Añadir Otro Ingrediente</button>
