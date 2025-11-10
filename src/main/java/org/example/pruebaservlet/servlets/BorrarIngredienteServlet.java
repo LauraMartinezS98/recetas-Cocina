@@ -22,7 +22,7 @@ public class BorrarIngredienteServlet extends HttpServlet {
         try {
             Integer id = Integer.parseInt(request.getParameter("id"));
 
-            // 1. Intentar la eliminación (la DB lo bloqueará si hay referencias)
+            // Intentar la eliminación (la DB lo BLOQUEARÁ si hay referencias)
             ingredienteDAO.eliminar(id);
 
             request.getSession().setAttribute("mensaje", "Ingrediente eliminado con éxito.");
@@ -30,21 +30,17 @@ public class BorrarIngredienteServlet extends HttpServlet {
         } catch (NumberFormatException e) {
             request.getSession().setAttribute("error", "Error: ID de ingrediente inválido.");
         } catch (RuntimeException e) {
-            // 2. Capturar el error de la Base de Datos
-
-            // Las excepciones de la DB se envuelven en RuntimeException.
             // Para el borrado bloqueado, el mensaje suele contener 'constraint', 'foreign key' o 'cannot delete'.
             String errorMsg = e.getMessage();
 
             if (errorMsg != null && (errorMsg.contains("constraint") || errorMsg.contains("foreign key") || errorMsg.contains("cannot delete"))) {
-                // 3. Mostrar el mensaje de control
-                request.getSession().setAttribute("error", "⛔ No se puede eliminar el ingrediente porque está **siendo utilizado en una o más recetas**.");
+                // Mostrar el mensaje de control
+                request.getSession().setAttribute("error", "No se puede eliminar el ingrediente porque está siendo utilizado en una o más recetas.");
             } else {
                 // Si es otro tipo de RuntimeException
                 request.getSession().setAttribute("error", "Error inesperado al eliminar el ingrediente: " + errorMsg);
             }
         }
-
         response.sendRedirect(vistaRedireccion);
     }
 }

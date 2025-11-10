@@ -68,7 +68,7 @@ public class CrearRecetaServlet extends HttpServlet {
     // --- RELACIÓN N:M ---
     private void guardarReceta(HttpServletRequest request) {
 
-        // 1. Obtener parámetros de campos de texto estándar
+        // 1. Obtener parámetros de campos de texto
         String nombre = request.getParameter("nombre");
         String descripcion = request.getParameter("descripcion");
 
@@ -108,8 +108,7 @@ public class CrearRecetaServlet extends HttpServlet {
                             cantidad,
                             unidad
                     );
-
-                    // Relación N:M (LÍNEA CLAVE)
+                    // Relación N:M
                     nuevaReceta.addDetalleReceta(detalle);
                 }
             }

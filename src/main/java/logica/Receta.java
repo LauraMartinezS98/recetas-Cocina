@@ -26,7 +26,7 @@ public class Receta {
     @Column(name = "modalidad", nullable = false)
     private Modalidad modalidad;
     // -------------
-
+    // --- RELACIÓN INVERSA (Uno a Muchos con DetalleReceta) ---
     @OneToMany(mappedBy = "receta", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<DetalleReceta> detallesRecetas = new ArrayList<>();
 
@@ -92,7 +92,7 @@ public class Receta {
     }
 
     /**
-     * Método auxiliar para ensamblar la relación bidireccional (Crucial para JPA)
+     * Método auxiliar para la relación bidireccional
      */
     public void addDetalleReceta(DetalleReceta detalle) {
         this.detallesRecetas.add(detalle);

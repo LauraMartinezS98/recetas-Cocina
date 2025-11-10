@@ -8,7 +8,7 @@ import util.JPAUtil;
 import java.util.List;
 
 public class IngredienteDAO {
-
+//*******GUARDAR*******
     public void guardar(Ingrediente ingrediente) {
         EntityManager em = JPAUtil.getEntityManager();
         EntityTransaction tx = em.getTransaction();
@@ -26,6 +26,7 @@ public class IngredienteDAO {
         }
     }
 
+    //*******BUSCAR POR ID*******
     public Ingrediente buscarPorId(Integer id) {
         EntityManager em = JPAUtil.getEntityManager();
         try {
@@ -48,6 +49,7 @@ public class IngredienteDAO {
         }
     }
 
+    //*******LISTAR TODOS LOS INGREDIENTES*******
     public List<Ingrediente> listarTodos() {
         EntityManager em = JPAUtil.getEntityManager();
         try {
@@ -58,6 +60,7 @@ public class IngredienteDAO {
         }
     }
 
+    //*******ACTUALIZAR*******
     public void actualizar(Ingrediente ingrediente) {
         EntityManager em = JPAUtil.getEntityManager();
         EntityTransaction tx = em.getTransaction();
@@ -75,10 +78,7 @@ public class IngredienteDAO {
             em.close();
         }
     }
-
-    /**
-     * Elimina un ingrediente por su ID.
-     */
+    //*******ELIMINAR INGREDIENTES POR ID*******
     public void eliminar(Integer id) {
         EntityManager em = JPAUtil.getEntityManager();
         EntityTransaction tx = em.getTransaction();
@@ -95,7 +95,7 @@ public class IngredienteDAO {
             if (tx.isActive()) {
                 tx.rollback();
             }
-            throw new RuntimeException("Error al eliminar el ingrediente. Posiblemente se está usando en una receta: " + e.getMessage(), e);
+            throw new RuntimeException("Error al eliminar el ingrediente, posiblemente se está usando en una receta.");
         } finally {
             em.close();
         }

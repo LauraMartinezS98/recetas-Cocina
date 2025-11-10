@@ -6,7 +6,7 @@
 <%@include file="/vistas/includes/header.jsp" %>
 
 <main>
-    <%-- 1. Recupera el objeto Receta enviado por MostrarEditarRecetaServlet --%>
+    <%-- 1. Recupera el objeto Receta enviado por ProcesarEditarRecetaServlet --%>
     <jsp:useBean id="receta" scope="request" type="logica.Receta"/>
 
     <h2>Editar Receta: <%= receta.getNombre() %></h2>

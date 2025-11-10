@@ -55,4 +55,24 @@ public class ProcesarEditarIngredienteServlet extends HttpServlet {
 
         response.sendRedirect(request.getContextPath() + vistaRedireccion);
     }
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        try {
+            Integer id = Integer.parseInt(request.getParameter("id"));
+            Ingrediente ingrediente = ingredienteDAO.buscarPorId(id);
+
+            if (ingrediente != null) {
+                request.setAttribute("ingrediente", ingrediente);
+                request.getRequestDispatcher("/vistas/ingredientes/editarIngrediente.jsp").forward(request, response);
+            } else {
+                request.getSession().setAttribute("error", "Error: Ingrediente no encontrado.");
+                response.sendRedirect("ListarIngredientes");
+            }
+        } catch (NumberFormatException e) {
+            request.getSession().setAttribute("error", "Error: ID de ingrediente inválido.");
+            response.sendRedirect("ListarIngredientes");
+        }
+    }
 }

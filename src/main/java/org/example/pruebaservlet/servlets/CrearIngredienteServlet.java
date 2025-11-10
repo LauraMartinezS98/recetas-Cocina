@@ -38,7 +38,7 @@ public class CrearIngredienteServlet extends HttpServlet {
             if (nombre == null || nombre.trim().isEmpty()) {
                 request.getSession().setAttribute("error", "Error: El nombre del ingrediente no puede estar vacío.");
                 response.sendRedirect(vistaRedireccion);
-                return; // Detiene la ejecución si el nombre está vacío
+                return; //Detiene la ejecución si el nombre está vacío
             }
             //Transforma la cadena (ej: "GRAMO") a un objeto ENUM.
             Unidad unidadEnum = Unidad.valueOf(unidadString);
@@ -57,7 +57,7 @@ public class CrearIngredienteServlet extends HttpServlet {
             //Captura errores de DAO (ej: duplicidad de nombre)
             request.getSession().setAttribute("error", "Error al guardar (posiblemente nombre duplicado): " + e.getMessage());
         }
-
+        //Envía la petición a la vista JSP
         response.sendRedirect(vistaRedireccion);
     }
 }

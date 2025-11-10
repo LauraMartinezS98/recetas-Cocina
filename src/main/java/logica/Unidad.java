@@ -18,10 +18,10 @@ public enum Unidad {
         return abreviatura;
     }
 
-    // Método para mostrar nombres legibles en la vista (Ej: Gramo, Mililitro)
     @Override
     public String toString() {
         String name = this.name();
+        //Muestra el nombre sin abreviatura
         return name.charAt(0) + name.substring(1).toLowerCase();
     }
 }

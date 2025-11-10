@@ -10,9 +10,6 @@ import java.util.Objects;
 @Table(name = "detalle_receta")
 public class DetalleReceta {
 
-    /*
-     * Clave primaria simple autogenerada, similar a tu clase Inscripcion.
-     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;

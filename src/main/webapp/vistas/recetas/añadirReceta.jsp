@@ -45,7 +45,9 @@
                     if (ingredientesDisponibles != null) {
                         for (Ingrediente ing : ingredientesDisponibles) {
                 %>
-                <option value="<%= ing.getId_ingrediente() %>"><%= ing.getNombre() %></option>
+                <option value="<%= ing.getId_ingrediente() %>">
+                    <%= ing.getNombre() %> (<%= ing.getUnidad() %>)
+                </option>
                 <%
                         }
                     }
@@ -53,17 +55,6 @@
             </select>
             <input type="number" name="cantidad" placeholder="Cantidad" min="0.1" step="any" class="form-input" required>
 
-            <select name="unidad" class="form-select" required>
-                <option value="">-- Unidad --</option>
-                <%
-                    // Itera sobre todos los valores del ENUM Unidad para la cantidad de DetalleReceta
-                    for (Unidad unidad : Unidad.values()) {
-                %>
-                <option value="<%= unidad.getAbreviatura() %>"><%= unidad.toString() %> (<%= unidad.getAbreviatura() %>)</option>
-                <%
-                    }
-                %>
-            </select>
 
             <button type="button" onclick="eliminarIngrediente(this)" class="btn btn--delete">Quitar</button>
             <button type="button" onclick="añadirIngrediente()" class="btn btn--primary">Añadir Otro Ingrediente</button>
@@ -84,7 +75,6 @@
         // Limpiar valores en el clon
         newItem.querySelector('select[name="ingredienteId"]').value = "";
         newItem.querySelector('input[name="cantidad"]').value = "";
-        newItem.querySelector('select[name="unidad"]').value = "";
 
         container.appendChild(newItem);
     }

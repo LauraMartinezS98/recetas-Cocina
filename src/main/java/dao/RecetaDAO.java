@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Map;
 
 public class RecetaDAO {
-
+    //*******GUARDAR*******
     public void guardar(Receta receta) {
         EntityManager em = JPAUtil.getEntityManager();
         EntityTransaction tx = em.getTransaction();
@@ -31,7 +31,7 @@ public class RecetaDAO {
             em.close();
         }
     }
-
+    //*******BUSCAR POR ID*******
     public Receta buscarPorId(Integer id) {
         EntityManager em = JPAUtil.getEntityManager();
         try {
@@ -49,7 +49,7 @@ public class RecetaDAO {
         }
     }
 
-
+    //*******LISTAR TODAS LAS RECETAS*******
     public List<Receta> listarTodos() {
         EntityManager em = JPAUtil.getEntityManager();
         try {
@@ -59,7 +59,7 @@ public class RecetaDAO {
             em.close();
         }
     }
-
+    //*******BUSCAR CON FILTROS*******
     public List<Receta> buscarPorFiltros(String modalidad, String dificultad) {
         EntityManager em = JPAUtil.getEntityManager();
 
@@ -94,9 +94,7 @@ public class RecetaDAO {
             em.close();
         }
     }
-    /**
-     * Actualiza una receta existente en la base de datos.
-     */
+    //*******ACTUALIZAR*******
     public void actualizar(Receta receta) {
         EntityManager em = JPAUtil.getEntityManager();
         EntityTransaction tx = em.getTransaction();
@@ -115,9 +113,7 @@ public class RecetaDAO {
         }
     }
 
-    /**
-     * Elimina una receta por su ID.
-     */
+    //*******ELIMINAR RECETA POR ID*******
     public void eliminar(Integer id) {
         EntityManager em = JPAUtil.getEntityManager();
         EntityTransaction tx = em.getTransaction();

@@ -11,7 +11,6 @@ import logica.Ingrediente;
 import java.io.IOException;
 import java.util.List;
 
-//Mapeo a "/Ingredientes"
 @WebServlet("/Ingredientes")
 public class ListarIngredientesServlet extends HttpServlet {
 
@@ -21,8 +20,8 @@ public class ListarIngredientesServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        //Aseguramos la codificación UTF-8 para evitar problemas de tildes si se usa GET
-        request.setCharacterEncoding("UTF-8");
+/*        //Aseguramos la codificación UTF-8 para evitar problemas de tildes si se usa GET
+        request.setCharacterEncoding("UTF-8"); BORRAR!!!!!!!!!!*/
 
         String accion = request.getParameter("accion");
         String vista = "/vistas/ingredientes/listarIngredientes.jsp"; //Vista por defecto
@@ -46,10 +45,10 @@ public class ListarIngredientesServlet extends HttpServlet {
         } catch (Exception e) {
             request.setAttribute("error", "Error al cargar los datos de ingredientes: " + e.getMessage());
             e.printStackTrace();
-            vista = "/index.jsp"; // Ir a la página principal si hay un fallo crítico
+            vista = "/index.jsp"; //Ir a la página principal si hay un fallo crítico
         }
 
-        // Envía la petición a la vista JSP
+        //Envía la petición a la vista JSP
         request.getRequestDispatcher(vista).forward(request, response);
     }
 }

@@ -18,7 +18,7 @@ public class Ingrediente {
     private Unidad unidad;
 
     // --- RELACIÓN INVERSA (Uno a Muchos con DetalleReceta) ---
-    @OneToMany(mappedBy = "ingrediente", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "ingrediente", fetch = FetchType.LAZY)
     private List<DetalleReceta> detallesRecetasDondeSeUsa;
 
     // --- Constructores ---

@@ -14,8 +14,7 @@ public class ControladorServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        // Simplemente redirige la petición a la página de inicio (index.jsp).
+        // Redirige la petición a la página de inicio (index.jsp).
         request.getRequestDispatcher("/index.jsp").forward(request, response);
     }
-
   }

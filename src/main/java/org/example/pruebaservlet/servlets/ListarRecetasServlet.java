@@ -45,7 +45,7 @@ public class ListarRecetasServlet extends HttpServlet {
                 if ((modalidad != null && !modalidad.isEmpty() && !"".equals(modalidad)) ||
                         (dificultad != null && !dificultad.isEmpty() && !"".equals(dificultad))) {
 
-                    // Llama al método del DAO SÓLO con los filtros de ENUM (SIN TIEMPO)
+                    // Llama al método del DAO SÓLO con los filtros
                     recetas = recetaDAO.buscarPorFiltros(modalidad, dificultad);
                 }
                 else {
@@ -61,7 +61,7 @@ public class ListarRecetasServlet extends HttpServlet {
             request.setAttribute("error", "Error al cargar o buscar recetas: " + e.getMessage());
             e.printStackTrace();
         }
-
+        //Envía la petición a la vista JSP
         request.getRequestDispatcher(vista).forward(request, response);
     }
 }

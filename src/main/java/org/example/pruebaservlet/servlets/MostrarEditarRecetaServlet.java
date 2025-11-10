@@ -1,3 +1,4 @@
+/*
 package org.example.pruebaservlet.servlets;
 
 import jakarta.servlet.ServletException;
@@ -41,3 +42,4 @@ public class MostrarEditarRecetaServlet extends HttpServlet {
         }
     }
 }
+ */

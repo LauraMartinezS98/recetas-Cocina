@@ -1,4 +1,4 @@
-package org.example.pruebaservlet.servlets;
+/*package org.example.pruebaservlet.servlets;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -35,3 +35,5 @@ public class MostrarEditarIngredienteServlet extends HttpServlet {
         }
     }
 }
+
+ */
